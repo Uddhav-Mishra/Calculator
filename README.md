@@ -16,12 +16,15 @@ Evaluates and prints the value of given expression in real time.
 Assumes and completes the given expression syntax and prints correct/most appropriate result
 with respect to the incomplete/complete expression
 
-Supported Operators are
-              
-			  addition +, subtraction - , division /, multiplication * ,
-
+Supported Operators are :
+			  
+              addition +, subtraction - , division /, multiplication * ,
+			  
               bitwise OR | , bitwise AND & , bitwise XOR ^
-
+			  
               modulo %.
 
 ![Alt text](ca1.PNG?raw=true "image1")
+
+
+![Alt text](ca2.PNG?raw=true "image2")
