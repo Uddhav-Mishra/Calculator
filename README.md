@@ -1,4 +1,4 @@
-# Caculator
+# Calculator
 Basic Calculator implementation 
 
 This application is a basic calculator that evaluates the expression provided to it.
@@ -13,13 +13,15 @@ Features
 
 Evaluates and prints the value of given expression in real time.
 
-Assumes and completes the given expression syntax and prints correct/most appropriate result with respect to the incomplete/complete expression
+Assumes and completes the given expression syntax and prints correct/most appropriate result
+with respect to the incomplete/complete expression
 
 Supported Operators are
-              addition +, subtraction - , division /, multiplication * ,
+              
+			  addition +, subtraction - , division /, multiplication * ,
 
               bitwise OR | , bitwise AND & , bitwise XOR ^
 
               modulo %.
 
- 
+![Alt text](ca1.PNG?raw=true "image1")
