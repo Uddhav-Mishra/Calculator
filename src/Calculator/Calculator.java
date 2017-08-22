@@ -32,10 +32,11 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
+import javax.swing.JToolBar;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
-/**
- * Class for the calculator application.
- */
 public class Calculator {
 
 	private JFrame frame;
@@ -99,6 +100,8 @@ public class Calculator {
 		expression.setHorizontalAlignment(SwingConstants.RIGHT);
 		
 		
+		
+		
 		expression.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
@@ -106,42 +109,47 @@ public class Calculator {
 			}
 			
 		});
+		EvaluateString evt = new EvaluateString();
 		expression.getDocument().addDocumentListener(new DocumentListener() {
-			@Override
-			  public void changedUpdate(DocumentEvent e) {
-					//System.out.println("regrg");
-
-			  }
-
+			
 			@Override
 			public void insertUpdate(DocumentEvent arg0) {
-			System.out.println(expression.getText());
-				String s = EvaluateString.evaluate(expression.getText());
-				if(s != "invalid")
-					result.setText(s);
+			//System.out.println(expression.getText());
+				changedUpdate(arg0);
 					
 				
 			}
 
 			@Override
 			public void removeUpdate(DocumentEvent arg0) {
-			//	System.out.println(expression.getText());
-				//String s = EvaluateString.evaluate(expression.getText());
-				//if(s != "invalid")
-					//result.setText(s);
+				changedUpdate(arg0);
 				// TODO Auto-generated method stub
 				
 			}
+			@Override
+			  public void changedUpdate(DocumentEvent e) {
+				System.out.println(expression.getText());
+				try{
+				String s = evt.evaluate(expression.getText());
+				if(s != "invalid")
+					result.setText(s);
+				}
+				catch(Exception e1)
+				{
+					
+				}
+				}
+			  
+
 		});
 		expression.addInputMethodListener(new InputMethodListener() {
 			public void caretPositionChanged(InputMethodEvent arg0) {
 			}
 			public void inputMethodTextChanged(InputMethodEvent arg0) {
-				System.out.println("loda");
 			}
 		});
 		expression.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		expression.setBounds(0, 0, 213, 49);
+		expression.setBounds(0, 18, 213, 31);
 		frame.getContentPane().add(expression);
 		expression.setColumns(10);
 		
@@ -217,6 +225,7 @@ public class Calculator {
 		eightbtn = new JButton("8");
 		eightbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				expression.setText(expression.getText()+'8');
 
 			}
@@ -382,5 +391,46 @@ public class Calculator {
 		result.setBounds(0, 48, 213, 20);
 		frame.getContentPane().add(result);
 		result.setColumns(10);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 0, 213, 21);
+		frame.getContentPane().add(menuBar);
+		
+		JMenu mnNewMenu = new JMenu("Helper Functions");
+		menuBar.add(mnNewMenu);
+		
+		JMenuItem mntmNsnsdc = new JMenuItem("convert_to_binary");
+		mntmNsnsdc.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String s = result.getText();
+				int a = (int)Double.parseDouble(s);
+				String binarys = Integer.toString(a, 2);
+				result.setText(binarys);
+				System.out.println(a);
+			}
+		});
+		mnNewMenu.add(mntmNsnsdc);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Is_prime?");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				  int i,m=0,flag=0; 
+					int n = (int)Double.parseDouble(result.getText());
+
+				 // int n=17;//it is the number to be checked  
+				  m=(int)Math.sqrt(n);    
+				  for(i=2;i<=m;i++){    
+				   if(n%i==0){    
+				   result.setText("Number is not prime");    
+				   flag=1;    
+				   break;    
+				   }    
+				  }    
+				  if(flag==0)    
+				  result.setText("Number is prime");    
+				
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem);
 	}
 }

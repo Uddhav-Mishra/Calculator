@@ -2,14 +2,8 @@ package Calculator;
 
 import java.util.Stack;
 
-/**
-* Evaluates the value of the given expression string.
-*/ 
 public class EvaluateString {
-    /**
-    * Evaluates the value of the given expression string.
-    */
-    public static String evaluate(String expression){
+    public  String evaluate(String expression){
         int cnt = 0;
         for (int i = 0; i < expression.length(); i++) {
             if (expression.charAt(i) == '(') {
@@ -86,8 +80,8 @@ public class EvaluateString {
             // Current token is an operator.
             else if (tokens[i] == '+' || (tokens[i] == '-' && negflag > 0) ||
                      tokens[i] == '*' || tokens[i] == '/' || tokens[i] == '&' || tokens[i] == '|' 
-                     || tokens[i] == '^' || tokens[i] == '%')
-            {   
+                     || tokens[i] == '^')
+            {    System.out.println("++++");
                 // While top of 'ops' has same or greater precedence to current
                 // token, which is an operator. Apply operator on top of 'ops'
                 // to top two elements in values stack
@@ -108,9 +102,8 @@ public class EvaluateString {
         return values.pop().toString();
     }
  
-    /** Returns true if 'op2' has higher or same precedence as 'op1',
-    * otherwise returns false.
-    */
+    // Returns true if 'op2' has higher or same precedence as 'op1',
+    // otherwise returns false.
     public static boolean hasPrecedence(char op1, char op2)
     {
         if (op2 == '(' || op2 == ')')
@@ -121,9 +114,8 @@ public class EvaluateString {
             return true;
     }
  
-    /** A utility method to apply an operator 'op' on operands 'a' 
-    *   and 'b'. Return the result.
-    */
+    // A utility method to apply an operator 'op' on operands 'a' 
+    // and 'b'. Return the result.
     public static double applyOp(char op, double b, double a)
     {
         switch (op)
@@ -146,7 +138,7 @@ public class EvaluateString {
         case '^':
             return (double)(Math.round(a) ^ Math.round(b)) ;
         case '%':
-            return (double)(Math.round(a) % Math.round(b)) ;    
+            return (double)(Math.round(a) % Math.round(b)) ;
         }
         return 0;
      
