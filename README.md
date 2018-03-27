@@ -33,9 +33,9 @@ with respect to the incomplete/complete expression.
 
 
 
-![Alt text](ca1.PNG?raw=true "images/image1")
+![Alt text](images/ca1.PNG?raw=true "image1")
 
 
-![Alt text](ca2.PNG?raw=true "images/image2")
+![Alt text](images/ca2.PNG?raw=true "image2")
 
-![Alt text](ca3.PNG?raw=true "images/image3")
+![Alt text](images/ca3.PNG?raw=true "image3")
